@@ -46,4 +46,17 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    // OkHttp Logging Interceptor
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    // Gson
+    implementation("com.google.code.gson:gson:2.10.1")
+    // RecyclerView
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    // Coil
+    implementation("io.coil-kt:coil:2.6.0")
+    // Google Play Services Maps
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
 }
