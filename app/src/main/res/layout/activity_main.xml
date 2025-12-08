@@ -14,14 +14,33 @@
         app:title="Landmark Explorer"
         app:titleTextColor="@android:color/white" />
 
-    <!-- Content Area (Placeholder) -->
+    <!-- Loading Progress -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:visibility="gone" />
+
+    <!-- RecyclerView for Landmarks List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/landmarksRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp" />
+
+    <!-- Empty/Error State -->
     <TextView
+        android:id="@+id/emptyStateText"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="Content will be here"
-        android:textSize="18sp" />
+        android:text="No landmarks found"
+        android:textSize="16sp"
+        android:visibility="gone" />
 
     <!-- Bottom Navigation with 3 Tabs -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
