@@ -23,24 +23,42 @@
         android:layout_marginTop="20dp"
         android:visibility="gone" />
 
-    <!-- RecyclerView for Landmarks List -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/landmarksRecyclerView"
+    <!-- FrameLayout Container for future switching -->
+    <FrameLayout
+        android:id="@+id/contentContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="8dp" />
+        android:layout_weight="1">
 
-    <!-- Empty/Error State -->
-    <TextView
-        android:id="@+id/emptyStateText"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="No landmarks found"
-        android:textSize="16sp"
-        android:visibility="gone" />
+        <!-- Your existing content (unchanged, just moved inside FrameLayout) -->
+        <LinearLayout
+            android:id="@+id/listContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- RecyclerView for Landmarks List -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/landmarksRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="8dp" />
+
+            <!-- Empty/Error State -->
+            <TextView
+                android:id="@+id/emptyStateText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="No landmarks found"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </FrameLayout>
 
     <!-- Bottom Navigation with 3 Tabs -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
