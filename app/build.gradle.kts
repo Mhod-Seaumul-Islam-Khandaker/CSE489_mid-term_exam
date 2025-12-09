@@ -49,20 +49,20 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     // Retrofit & Networking (NO individual versions needed)
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp") // Version from BOM (4.12.0)
-    implementation("com.squareup.okhttp3:logging-interceptor") // Version from BOM
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.okhttp) // Version from BOM (4.12.0)
+    implementation(libs.logging.interceptor) // Version from BOM
 
     // Gson (Keep this as it's separate from the BOM)
-    implementation("com.google.code.gson:gson:2.10.1")
+    implementation(libs.gson)
 
     // UI Components
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
-    implementation("io.coil-kt:coil:2.6.0")
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.coil)
 
     // Google Services
-    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation(libs.play.services.maps)
 
     // Testing
     testImplementation(libs.junit)

@@ -23,21 +23,20 @@
         android:layout_marginTop="20dp"
         android:visibility="gone" />
 
-    <!-- FrameLayout Container for future switching -->
+    <!-- SIMPLE WRAPPER (No functionality change) -->
     <FrameLayout
-        android:id="@+id/contentContainer"
+        android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <!-- Your existing content (unchanged, just moved inside FrameLayout) -->
+        <!-- Your existing working content -->
         <LinearLayout
-            android:id="@+id/listContainer"
+            android:id="@+id/currentContentView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!-- RecyclerView for Landmarks List -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/landmarksRecyclerView"
                 android:layout_width="match_parent"
@@ -45,12 +44,10 @@
                 android:layout_weight="1"
                 android:padding="8dp" />
 
-            <!-- Empty/Error State -->
             <TextView
                 android:id="@+id/emptyStateText"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="No landmarks found"
                 android:textSize="16sp"
@@ -60,7 +57,7 @@
 
     </FrameLayout>
 
-    <!-- Bottom Navigation with 3 Tabs -->
+    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"

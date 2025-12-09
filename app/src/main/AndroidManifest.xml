@@ -14,9 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Test">
         <!-- ADD THIS LINE INSIDE <application> -->
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBzlQjr19bT0ar-6PStup1T3spf-q5-Zzo"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
