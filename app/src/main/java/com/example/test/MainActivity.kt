@@ -5,10 +5,12 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test.adapter.LandmarkAdapter
-import com.example.test.model.Landmark  // ← ADD THIS LINE
+import com.example.test.fragments.OverviewFragment
+import com.example.test.model.Landmark
 import com.example.test.network.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var emptyStateText: TextView
     private lateinit var adapter: LandmarkAdapter
+    private lateinit var currentContentView: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,34 +32,64 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.landmarksRecyclerView)
         progressBar = findViewById(R.id.progressBar)
         emptyStateText = findViewById(R.id.emptyStateText)
+        currentContentView = findViewById(R.id.currentContentView)
 
         // Setup RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = LandmarkAdapter()
         recyclerView.adapter = adapter
 
-        // Setup bottom navigation (for future tabs)
+        // Setup bottom navigation
         val bottomNavigation = findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.overview -> {
-                    // Already on overview, refresh data
-                    fetchLandmarks()
+                    showFragment(OverviewFragment(), "overview")
                     true
                 }
                 R.id.records -> {
-                    // Will implement later for Records tab
+                    showRecordsView()
                     true
                 }
                 R.id.new_entry -> {
-                    // Will implement later for New Entry tab
+                    // For now, just show records view
+                    showRecordsView()
                     true
                 }
                 else -> false
             }
         }
 
+        // Start with Records view (your current list)
+        showRecordsView()
+
         // Fetch landmarks from API
+        fetchLandmarks()
+    }
+
+    private fun showFragment(fragment: Fragment, tag: String) {
+        // Hide the current content view (RecyclerView)
+        currentContentView.visibility = View.GONE
+
+        // Show the fragment container
+        val fragmentContainer = findViewById<View>(R.id.fragmentContainer)
+        fragmentContainer.visibility = View.VISIBLE
+
+        // Replace with new fragment
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment, tag)
+            .commit()
+    }
+
+    private fun showRecordsView() {
+        // Hide fragment container (map)
+        val fragmentContainer = findViewById<View>(R.id.fragmentContainer)
+        fragmentContainer.visibility = View.GONE
+
+        // Show the RecyclerView and its parent
+        currentContentView.visibility = View.VISIBLE
+
+        // Refresh data
         fetchLandmarks()
     }
 
