@@ -6,18 +6,21 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test.adapter.LandmarkAdapter
 import com.example.test.fragments.OverviewFragment
 import com.example.test.model.Landmark
 import com.example.test.network.RetrofitClient
+import com.example.test.viewmodel.LandmarkViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var viewModel: LandmarkViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var emptyStateText: TextView
@@ -26,6 +29,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Initialize ViewModel
+        viewModel = ViewModelProvider(this).get(LandmarkViewModel::class.java)
 
         // Initialize views
         recyclerView = findViewById(R.id.landmarksRecyclerView)
@@ -100,6 +106,9 @@ class MainActivity : AppCompatActivity() {
 
                 if (response.isSuccessful && response.body() != null) {
                     val landmarks = response.body()!!
+
+                    // Store landmarks in ViewModel (NEW LINE ADDED)
+                    viewModel.setLandmarks(landmarks)
 
                     if (landmarks.isEmpty()) {
                         showEmptyState(true, "No landmarks found")

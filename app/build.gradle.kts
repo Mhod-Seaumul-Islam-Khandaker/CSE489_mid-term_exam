@@ -5,9 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.test"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.test"
@@ -48,21 +46,25 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
-    // Retrofit & Networking (NO individual versions needed)
+    // Retrofit & Networking
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
-    implementation(libs.okhttp) // Version from BOM (4.12.0)
-    implementation(libs.logging.interceptor) // Version from BOM
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
 
-    // Gson (Keep this as it's separate from the BOM)
+    // Gson
     implementation(libs.gson)
 
     // UI Components
     implementation(libs.androidx.recyclerview)
     implementation(libs.coil)
 
-    // add to dependencies { ... }
+    // OpenStreetMap
     implementation("org.osmdroid:osmdroid-android:6.1.20")
+
+    // Material Components (for BottomSheetDialog)
+
+    implementation("com.google.android.material:material:1.11.0")
 
     // Testing
     testImplementation(libs.junit)

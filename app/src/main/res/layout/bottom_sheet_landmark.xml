@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:layout_marginBottom="16dp">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/bottomSheetTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Landmark Title"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black" />
+
+    <!-- Coordinates -->
+    <TextView
+        android:id="@+id/bottomSheetCoordinates"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Lat: 0.0, Lon: 0.0"
+        android:textSize="16sp"
+        android:textColor="@android:color/darker_gray" />
+
+    <!-- ID -->
+    <TextView
+        android:id="@+id/bottomSheetId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="ID: 0"
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray" />
+
+    <!-- Close Button -->
+    <Button
+        android:id="@+id/closeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="end"
+        android:text="Close"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp" />
+
+</LinearLayout>
