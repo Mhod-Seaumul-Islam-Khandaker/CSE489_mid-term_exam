@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var emptyStateText: TextView
     private lateinit var adapter: LandmarkAdapter
-    private lateinit var currentContentView: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.landmarksRecyclerView)
         progressBar = findViewById(R.id.progressBar)
         emptyStateText = findViewById(R.id.emptyStateText)
-        currentContentView = findViewById(R.id.currentContentView)
 
         // Setup RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -44,50 +42,50 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.overview -> {
-                    showFragment(OverviewFragment(), "overview")
+                    showMapView()
                     true
                 }
                 R.id.records -> {
-                    showRecordsView()
+                    showListView()
                     true
                 }
                 R.id.new_entry -> {
-                    // For now, just show records view
-                    showRecordsView()
+                    // For now, just show list view
+                    showListView()
                     true
                 }
                 else -> false
             }
         }
 
-        // Start with Records view (your current list)
-        showRecordsView()
-
-        // Fetch landmarks from API
+        // Start with List view
+        showListView()
         fetchLandmarks()
     }
 
-    private fun showFragment(fragment: Fragment, tag: String) {
-        // Hide the current content view (RecyclerView)
-        currentContentView.visibility = View.GONE
+    private fun showMapView() {
+        // Hide the list view
+        findViewById<View>(R.id.currentContentView).visibility = View.GONE
 
-        // Show the fragment container
+        // Show and setup map fragment
         val fragmentContainer = findViewById<View>(R.id.fragmentContainer)
         fragmentContainer.visibility = View.VISIBLE
 
-        // Replace with new fragment
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, fragment, tag)
-            .commit()
+        // Add fragment if not already added
+        val existingFragment = supportFragmentManager.findFragmentByTag("overview")
+        if (existingFragment == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, OverviewFragment(), "overview")
+                .commit()
+        }
     }
 
-    private fun showRecordsView() {
-        // Hide fragment container (map)
-        val fragmentContainer = findViewById<View>(R.id.fragmentContainer)
-        fragmentContainer.visibility = View.GONE
+    private fun showListView() {
+        // Hide the map view
+        findViewById<View>(R.id.fragmentContainer).visibility = View.GONE
 
-        // Show the RecyclerView and its parent
-        currentContentView.visibility = View.VISIBLE
+        // Show the list view
+        findViewById<View>(R.id.currentContentView).visibility = View.VISIBLE
 
         // Refresh data
         fetchLandmarks()

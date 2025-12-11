@@ -23,39 +23,40 @@
         android:layout_marginTop="20dp"
         android:visibility="gone" />
 
-    <!-- SIMPLE WRAPPER (No functionality change) -->
+    <!-- RECORDS VIEW (List of landmarks) -->
+    <LinearLayout
+        android:id="@+id/currentContentView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/landmarksRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="8dp" />
+
+        <TextView
+            android:id="@+id/emptyStateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="No landmarks found"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- MAP VIEW CONTAINER (For Overview tab) -->
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <!-- Your existing working content -->
-        <LinearLayout
-            android:id="@+id/currentContentView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/landmarksRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:padding="8dp" />
-
-            <TextView
-                android:id="@+id/emptyStateText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="No landmarks found"
-                android:textSize="16sp"
-                android:visibility="gone" />
-
-        </LinearLayout>
-
-    </FrameLayout>
+        android:layout_weight="1"
+        android:visibility="gone" />
 
     <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
