@@ -61,8 +61,8 @@ dependencies {
     implementation(libs.androidx.recyclerview)
     implementation(libs.coil)
 
-    // Google Services
-    implementation(libs.play.services.maps)
+    // add to dependencies { ... }
+    implementation("org.osmdroid:osmdroid-android:6.1.20")
 
     // Testing
     testImplementation(libs.junit)

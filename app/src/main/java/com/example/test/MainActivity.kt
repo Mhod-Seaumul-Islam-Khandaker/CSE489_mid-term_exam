@@ -5,10 +5,12 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test.adapter.LandmarkAdapter
-import com.example.test.model.Landmark  // ← ADD THIS LINE
+import com.example.test.fragments.OverviewFragment
+import com.example.test.model.Landmark
 import com.example.test.network.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,28 +37,57 @@ class MainActivity : AppCompatActivity() {
         adapter = LandmarkAdapter()
         recyclerView.adapter = adapter
 
-        // Setup bottom navigation (for future tabs)
+        // Setup bottom navigation
         val bottomNavigation = findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.overview -> {
-                    // Already on overview, refresh data
-                    fetchLandmarks()
+                    showMapView()
                     true
                 }
                 R.id.records -> {
-                    // Will implement later for Records tab
+                    showListView()
                     true
                 }
                 R.id.new_entry -> {
-                    // Will implement later for New Entry tab
+                    // For now, just show list view
+                    showListView()
                     true
                 }
                 else -> false
             }
         }
 
-        // Fetch landmarks from API
+        // Start with List view
+        showListView()
+        fetchLandmarks()
+    }
+
+    private fun showMapView() {
+        // Hide the list view
+        findViewById<View>(R.id.currentContentView).visibility = View.GONE
+
+        // Show and setup map fragment
+        val fragmentContainer = findViewById<View>(R.id.fragmentContainer)
+        fragmentContainer.visibility = View.VISIBLE
+
+        // Add fragment if not already added
+        val existingFragment = supportFragmentManager.findFragmentByTag("overview")
+        if (existingFragment == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, OverviewFragment(), "overview")
+                .commit()
+        }
+    }
+
+    private fun showListView() {
+        // Hide the map view
+        findViewById<View>(R.id.fragmentContainer).visibility = View.GONE
+
+        // Show the list view
+        findViewById<View>(R.id.currentContentView).visibility = View.VISIBLE
+
+        // Refresh data
         fetchLandmarks()
     }
 
