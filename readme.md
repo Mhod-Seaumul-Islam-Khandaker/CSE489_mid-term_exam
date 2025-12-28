@@ -4,7 +4,7 @@ An Android application for exploring, managing, and visualizing landmarks in Ban
 
 ## 📱 App Overview
 
-Landmark Explorer allows users to view landmarks on an interactive map and manage them through a simple list interface. The app fetches data from a  REST API and displays landmarks across Bangladesh with detailed information.
+Landmark Explorer allows users to view landmarks on an interactive map and manage them through a simple list interface. The app fetches data from a REST API and displays landmarks across Bangladesh with detailed information.
 
 ## ✨ Features
 
@@ -49,10 +49,9 @@ Landmark Explorer allows users to view landmarks on an interactive map and manag
 2. **Open in Android Studio**: File → Open → Select project folder
 3. **Sync Gradle**: Click "Sync Now" when prompted
 4. **Build the project**: Build → Make Project
-5. **Run on emulator or device**: 
+5. **Run on emulator or device**:
    - Select your target device
    - Click Run button (▶️)
-
 
 ## 🗺️ API Integration
 
@@ -63,7 +62,6 @@ The app connects to a REST API with the following endpoints:
 - **POST `/api.php`**: Create new landmark
 - **PUT `/api.php`**: Update existing landmark
 - **DELETE `/api.php`**: Remove landmark
-
 
 ## ⚠️ Known Limitations
 
@@ -80,3 +78,17 @@ The app connects to a REST API with the following endpoints:
 - Coordinate validation limited to Bangladesh range
 - No local database persistence (cloud-only)
 
+### AI Usage Declaration
+
+The following AI tools were used during the development of this project, strictly as learning aids and productivity tools:
+
+#### 1. ChatGPT
+Used for learning purposes and template code generation. It was primarily utilized to gain a clear understanding of concepts, as it provides concise and easy-to-understand explanations. The generated templates served as a starting point and were later customized to fit the specific requirements of this project.
+
+#### 2. DeepSeek
+Used for code template and boilerplate generation. It was particularly helpful due to its ability to maintain long contextual understanding across multiple files within the codebase. Based on this context, it provided relevant generic templates, which were then modified, extended, and optimized according to the project’s needs.
+
+#### 3. Gemini
+Used in both Ask Mode and Agent Mode for debugging and error fixing. **It was not used to write the project itself. Its role was limited to identifying issues, suggesting fixes, and supporting the learning process during development**.
+
+**Overall, AI-generated templates were treated as references only. All code was reviewed, customized, and adapted to meet the specific functional and architectural requirements of the project, rather than being directly copied and pasted.**
