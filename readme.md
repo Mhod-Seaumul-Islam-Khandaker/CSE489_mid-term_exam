@@ -67,7 +67,6 @@ The app connects to a REST API with the following endpoints:
 
 ## ⚠️ Known Limitations
 
-### Current Version 1.0
 1. **Image Upload**: Create/Update operations don't support image uploads
 2. **Edit/Delete UI**: Functions are implemented in API but Not implemented in UI
 3. **Location Picker**: Manual coordinate input only (no map tap selection)
@@ -81,65 +80,3 @@ The app connects to a REST API with the following endpoints:
 - Coordinate validation limited to Bangladesh range
 - No local database persistence (cloud-only)
 
-## 🔧 Potential Enhancements
-
-Future versions could include:
-1. Image upload support for landmarks
-2. GPS location picker for adding landmarks
-3. Search/filter functionality
-4. Offline caching of map tiles
-5. Marker clustering for dense areas
-6. Route planning between landmarks
-7. Favorite/bookmark system
-8. Dark mode support
-
-## 📱 Screenshots
-
-*(Add your screenshots here)*
-- List View with landmark cards
-- Map View with markers
-- Add Landmark dialog
-- Marker detail bottom sheet
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-1. **"No landmarks found"**
-   - Check internet connection
-   - Verify API is accessible
-
-2. **Map not loading**
-   - Ensure INTERNET permission is granted
-   - Check OpenStreetMap server status
-
-3. **Markers not visible**
-   - Zoom in closer (markers might be clustered)
-   - Verify coordinates are within Bangladesh range
-
-4. **App crashes on startup**
-   - Clean and rebuild project
-   - Check for missing dependencies
-
-### Logs & Debugging
-- Check Logcat for API responses
-- Enable network debugging in Retrofit interceptor
-- Verify coordinate values in debug logs
-
-## 📄 License
-
-This project is for educational purposes as part of CSE489 coursework.
-
-## 🙏 Acknowledgments
-
-- OpenStreetMap for map tiles
-- Android Developer documentation
-- Retrofit and osmdroid libraries
-- Course instructors and teaching assistants
-
----
-
-**Version**: 1.0  
-**Last Updated**: December 2024  
-**Course**: CSE489 - Android Application Development  
-**Developer**: [Your Name/Student ID]
